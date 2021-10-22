@@ -23,15 +23,15 @@ public class MyClass {
     
     public static void forEachLoop(int[] arr){
         
-        // int len  = arr.length;
+        int len  = arr.length;
         
-        // for(int j = 0 ; j < len; j++){
-        //     System.out.print(arr[j] + (j == len - 1 ? "" : " : "));
-        // }
-        
-        for(int i : arr){
-            System.out.print(i + " : ");
+        for(int j = 0 ; j < len; j++){
+            System.out.print(arr[j] + (j == len - 1 ? "" : " : "));
         }
+        
+        // for(int i : arr){
+        //     System.out.print(i + " : ");
+        // }
     }
     
     public static void main(String args[]) {
