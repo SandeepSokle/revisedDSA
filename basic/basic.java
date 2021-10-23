@@ -1,4 +1,4 @@
-import java.util.Scanner;
+// import java.util.Scanner;
 
 public class basic {
 
@@ -73,31 +73,105 @@ public class basic {
         return ans;
     }
 
-    public static int countDigit(int n){
-        int counter = 0 ;
-
-        while(n > 0){
+    public static int countDigit(int n) {
+        int counter = 0;
+        while (n > 0) {
             counter++;
             n /= 10;
         }
-
         return counter;
+    }
 
+    public static int reverseNumber(int n) {
+        int ans = 0;
+        int counter = 0;
+        while (n > 0) {
+            counter++;
+            int rem = n % 10;
+            n /= 10;
+            ans = ans * 10 + rem;
+        }
+        System.out.println(counter);
+        return ans;
+    }
+
+    public static int pow(int n) {
+        int ans = 1;
+        while (n > 0) {
+            ans *= 10;
+            n /= 10;
+        }
+        return ans / 10;
+    }
+
+    public static void printNumber(int n) {
+        int pow = pow(n);
+
+        while (n > 0) {
+            int div = n / pow;
+            n = n % pow;
+            pow /= 10;
+            System.out.println(div);
+        }
+    }
+
+    ////// rotate number
+    public static int pow2(int n) {
+        int ans = 1;
+        while (n > 0) {
+            if (n % 2 == 0) {
+                ans *= 100;
+                n -= 2;
+            } else {
+                ans *= 10;
+                n--;
+            }
+        }
+        return ans;
+    }
+
+    public static int rotateNumber(int n, int rv){
+        int digit = countDigit(n);
+        if( rv <= -digit || rv >= digit ){
+            rv %= digit;
+        }
+        if(rv < 0 ){
+            rv += digit;
+        }
+
+        int stDigit = digit - rv;
+        int endDigit = rv;
+
+        int stPo = pow2(stDigit);
+        int endPo = pow2(endDigit);
+
+        int startingNumber = n / endPo ;
+        int endingNumber = n % endPo;
+
+        int ans = endingNumber * stPo + startingNumber;
+
+        return ans;
     }
 
     public static void main(String args[]) {
 
-        Scanner scn = new Scanner(System.in);
+        // Scanner scn = new Scanner(System.in);
 
-        int n = scn.nextInt();
-        scn.close();
-        System.out.println(countDigit(n));
+        // int n = scn.nextInt();
+        // scn.close();
+        // System.out.println(countDigit(n));
 
         // int[] arr = new int[] { 1, 3, 5, 6, 8, 14, 234, 45, 67 };
 
         // table(a);
 
         // forEachLoop(arr);
+
+        // System.out.println(reverseNumber(12345));
+
+        // printNumber(12345);
+
+        System.out.println(rotateNumber(12345,10));
 
     }
 }
