@@ -118,12 +118,15 @@ public class pattern {
     public static void pattern10(int n) {
         int mid = n /2;
 
-        for (int i = 0; i <= n; i++) {
+        for (int i = 0; i < n; i++) {
             int val = i % (mid + 1);
             for (int j = 0; j < n; j++) {
-                if( j == mid - val || j == mid + val && j <){
+                if( (j == mid - val || j == mid + val) && i <= mid ){
+                    System.out.print("*\t");
+                }else if( (j == mid - (n - i -1) || j == mid + (n - i -1) )&& i > mid ){
                     System.out.print("*\t");
                 }else{
+
                     System.out.print(" \t");
                 }
             }
