@@ -24,11 +24,9 @@ public class arrays {
         }
     }
 
+    public static int[] inputReturnArray(int n) {
 
-    public static int[] inputReturnArray(int n){
-
-       
-        int[] arr2= new int[n];
+        int[] arr2 = new int[n];
         for (int i = 0; i < n; i++) {
             arr2[i] = scn.nextInt();
         }
@@ -37,12 +35,21 @@ public class arrays {
 
     }
 
-
-    public static int[] inverse(int[] arr, int size){
+    public static int[] inverse(int[] arr, int size) {
         int[] ans = new int[size];
-        for(int i = 0 ; i< size ; i++){
+        for (int i = 0; i < size; i++) {
             ans[arr[i]] = i;
         }
+        return ans;
+    }
+
+    public static int[] rotateAnArray(int[] arr,int k) {
+        int n = arr.length;
+        int[] ans = new int[n];
+        for(int i = 0 ; i < n; i++){
+            ans[i] = arr[(i-k+n)%n];
+        }
+
         return ans;
     }
 
@@ -57,13 +64,15 @@ public class arrays {
 
         // // input()
         input(arr, n);
+
+        int k = scn.nextInt();
         // // output()
-
-
 
         // function, return a array
         // int[] arr = inputReturnArray(n);
 
-        output(inverse(arr, n));
+        // output(inverse(arr, n));
+
+        output(rotateAnArray(arr, k));
     }
 }
