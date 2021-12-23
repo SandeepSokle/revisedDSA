@@ -1,38 +1,61 @@
 import java.util.*;
 
-public class test{
+public class test {
 
+    private static int findPay(int[] arr) {
 
-    public static class pair{
-        int firstVal = -1;
-        int secondVal = -1;
-    }
+        int min = (int) 10e8 + 1;
+        int sum = 0;
+        int len = arr.length;
 
-private static void findpair(int[] arr,int n,pair ans){
-    int st = 0;
-    int end = arr.length-1;
-    while(st<end){
-        int sum = arr[st] + arr[end];
-        if(sum == n){
-            ans.firstVal = arr[st];
-            ans.secondVal = arr[end];
-            return;
-        }else if(sum < n){
-            st++;
-        }else{
-            end--;
+        for (int i = 0; i < len; i++) {
+            int add = arr[i] - (i == 0 ? 0 : min);
+            sum += add <= 0 ? 0 : add;
+            min = Math.min(min, arr[i]);
         }
+        return sum;
     }
-}
 
-public static void main(String[] argv){
-    int[] arr = new int[] {2,6,7,8,9,12};
-    Arrays.sort(arr);
-    pair ans = new pair();
-    findpair(arr,15,ans);
+    private static String tryangleId(String str) {
+        String[] ans = str.split(" ");
+        if (Integer.parseInt(ans[0]) == Integer.parseInt(ans[1])
+                && Integer.parseInt(ans[1]) == Integer.parseInt(ans[2])) {
+            return "Equilateral";
+        } else if (Integer.parseInt(ans[0]) == Integer.parseInt(ans[1])
+                && Integer.parseInt(ans[1]) != Integer.parseInt(ans[2])
+                || Integer.parseInt(ans[0]) != Integer.parseInt(ans[1])
+                        && Integer.parseInt(ans[1]) == Integer.parseInt(ans[2])
+                || Integer.parseInt(ans[0]) == Integer.parseInt(ans[2])
+                        && Integer.parseInt(ans[1]) != Integer.parseInt(ans[2])) {
+            return "Isosceles";
+        } else {
+            return "None of these";
+        }
 
-    System.out.println(ans.firstVal);
-    System.out.println(ans.secondVal);
-}
+    }
+
+    private static void printTopSpeed() {
+        System.out.println("Top speed of vehicle is 100 kmph");
+    }
+
+    private static void printTopSpeed(int t) {
+        System.out.println("Top speed of vehicle is " + t + " kmph");
+    }
+
+    private static void printTopSpeed(String v, int t) {
+        System.out.println("Top speed of vehicle " + v + " is " + t + " kmph");
+    }
+
+    public static void main(String[] argv) {
+        // int[] arr = new int[] { 1, 2, 3, 4 };
+
+        // int a = findPay(arr);
+        // System.out.println(a);
+
+        // System.out.println(tryangleId("23 23 3"));
+        printTopSpeed();
+        printTopSpeed(200);
+        printTopSpeed("frari", 400);
+    }
 
 }
